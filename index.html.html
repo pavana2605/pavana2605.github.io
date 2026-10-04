@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Pavana M - 3rd-semester B.Tech Computer Science and Engineering student at REVA University, Bengaluru." />
+  <title>Pavana M | Computer Science Engineering Portfolio</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#06080F',
+              card: 'rgba(15, 23, 42, 0.65)',
+              accent: '#06b6d4',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #06080F;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .glass-card {
+      background: rgba(13, 19, 36, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .text-gradient-accent {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-[#06080F] text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200 antialiased relative overflow-x-hidden">
+    <!-- Inline social icons (no external dependency) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <symbol id="icon-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+      <symbol id="icon-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+      <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></symbol>
+    </svg>
+
+
+  <!-- Interactive Canvas Background -->
+  <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none -z-10"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#06080F]/85 backdrop-blur-xl border-b border-white/[0.08] py-3">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2.5 text-base sm:text-lg font-bold tracking-tight text-white hover:opacity-90">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 via-indigo-500 to-cyan-400 p-[1px]">
+          <div class="w-full h-full bg-[#090D1A] rounded-[7px] flex items-center justify-center">
+            <span class="text-xs font-mono font-bold text-cyan-400">P</span>
+          </div>
+        </div>
+        <span class="font-semibold tracking-wide">
+          Pavana M
+          <span class="inline-block w-1.5 h-1.5 ml-1 rounded-full bg-cyan-400 animate-pulse"></span>
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden xl:flex items-center gap-1 rounded-full px-3.5 py-1.5 bg-white/[0.03] border border-white/[0.06] backdrop-blur-md">
+        <a href="#home" class="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white rounded-full transition-colors">Home</a>
+        <a href="#about" class="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white rounded-full transition-colors">About</a>
+        <a href="#activities" class="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white rounded-full transition-colors">Activities</a>
+        <a href="#skills" class="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white rounded-full transition-colors">Skills</a>
+        <a href="#projects" class="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white rounded-full transition-colors">Projects</a>
+        <a href="#education" class="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white rounded-full transition-colors">Education</a>
+        <a href="#career-goal" class="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white rounded-full transition-colors">Career Goal</a>
+        <a href="#contact" class="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white rounded-full transition-colors">Contact</a>
+        <a href="#socials" class="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white rounded-full transition-colors">Socials</a>
+      </nav>
+
+      <a href="#contact" class="hidden xl:inline-flex px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 rounded-lg transition-all">
+        Connect
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="relative z-10 flex flex-col pt-20">
+
+    <!-- 1. HERO SECTION -->
+    <section id="home" class="min-h-[85vh] flex flex-col justify-center items-center px-6 sm:px-8 py-20 text-center">
+      <div class="max-w-4xl mx-auto flex flex-col items-center">
+        
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-medium mb-8 backdrop-blur-md shadow-[0_0_18px_rgba(6,182,212,0.15)]">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+          </span>
+          <span class="tracking-wide font-mono">3rd Semester CSE Undergraduate</span>
+          <span class="text-slate-600">•</span>
+          <span class="text-slate-400">REVA University</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+          Hi, I'm <span class="text-gradient-accent">Pavana M</span>
+        </h1>
+
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-300 mb-6 tracking-tight">
+          Computer Science and Engineering Student
+        </h2>
+
+        <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Passionate about <span class="text-slate-200 font-medium">programming</span>, <span class="text-slate-200 font-medium">software development</span>, and <span class="text-slate-200 font-medium">web technologies</span>. Dedicated to algorithmic <span class="text-cyan-300 font-medium">problem solving</span>, building practical applications, and aspiring to a software engineering career at Apple.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+          <a href="#activities" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-sm tracking-wide text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 shadow-[0_0_25px_-5px_rgba(59,130,246,0.5)] hover:shadow-[0_0_35px_-2px_rgba(59,130,246,0.7)] transition-all">
+            View Activities & Projects
+          </a>
+          <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-sm tracking-wide text-slate-200 bg-slate-900/60 hover:text-white hover:bg-slate-800/80 border border-slate-700/60 hover:border-cyan-500/50 transition-all">
+            Get In Touch →
+          </a>
+        </div>
+
+        <div class="mt-14 pt-8 border-t border-white/[0.06] flex flex-wrap items-center justify-center gap-2.5 text-xs text-slate-400">
+          <span class="text-slate-500 uppercase font-mono tracking-wider mr-1">Core Tech Stack:</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-slate-300 font-mono">C</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-slate-300 font-mono">Java</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-slate-300 font-mono">HTML</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-slate-300 font-mono">CSS</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-slate-300 font-mono">JavaScript</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-slate-300 font-mono">MySQL</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-slate-300 font-mono">Git & GitHub</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-slate-300 font-mono">VS Code</span>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent my-4"></div>
+
+    <!-- 2. ABOUT ME SECTION -->
+    <section id="about" class="py-24 px-6 sm:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-3">
+            <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+            <span>Profile & Background</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">About Me</h2>
+          <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+            Committed to engineering software solutions through solid fundamentals and modern technology.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-stretch mb-12">
+          <div class="lg:col-span-7 glass-card rounded-2xl p-8 sm:p-10 flex flex-col justify-between border border-white/[0.08]">
+            <div>
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                  <i data-lucide="cpu" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white tracking-tight">Computer Science and Engineering</h3>
+                  <p class="text-xs text-cyan-400 font-mono">REVA University • 3rd Semester (Bengaluru, India)</p>
+                </div>
+              </div>
+
+              <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+                <p>
+                  I am <strong class="text-white font-semibold">Pavana M</strong>, a Computer Science and Engineering student at <strong class="text-white font-semibold">REVA University</strong> passionate about technology, programming, and software development.
+                </p>
+                <p>
+                  I am interested in learning new technologies and building creative, practical applications. I aim to strengthen my programming, problem-solving, and development skills through academic activities and personal projects.
+                </p>
+                <p className="text-slate-400">
+                  My work so far includes C practice problems, a full-stack web project (My Dream Cars), and this portfolio website.
+                </p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 pt-6 mt-8 border-t border-white/[0.08]">
+              <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                <p class="text-xs text-slate-500 uppercase font-mono mb-1">Semester</p>
+                <p class="text-sm font-semibold text-slate-200">3rd Semester</p>
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                <p class="text-xs text-slate-500 uppercase font-mono mb-1">Discipline</p>
+                <p class="text-sm font-semibold text-slate-200">CSE Undergraduate</p>
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                <p class="text-xs text-slate-500 uppercase font-mono mb-1">Campus</p>
+                <p class="text-sm font-semibold text-slate-200">REVA, Bengaluru</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            <div class="glass-card rounded-2xl p-6 border border-white/[0.08] flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0 mt-1">
+                <i data-lucide="code-2" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-base font-semibold text-white mb-1">Core Programming & Logic</h4>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  Building foundations in C and Java, and practising arrays, strings, and basic algorithms.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 border border-white/[0.08] flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0 mt-1">
+                <i data-lucide="globe" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-base font-semibold text-white mb-1">Web & Database Systems</h4>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  Built My Dream Cars, connecting an HTML/CSS/JavaScript frontend to MySQL using Node.js and Express.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 border border-white/[0.08] flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0 mt-1">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-base font-semibold text-white mb-1">Automotive & Cinematic UI</h4>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  Bringing an automotive-inspired, cinematic look to my web projects.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-8 border border-white/[0.08]">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h3 class="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+                <i data-lucide="heart" class="w-4 h-4 text-cyan-400"></i>
+                <span>Interests & Focus Areas</span>
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">Core pursuits shaping my engineering perspective</p>
+            </div>
+            <span class="text-xs font-mono text-cyan-400/80 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20 w-fit">
+              3rd Semester CSE
+            </span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] text-center text-xs font-semibold text-slate-300">Programming</div>
+            <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] text-center text-xs font-semibold text-slate-300">Software Development</div>
+            <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] text-center text-xs font-semibold text-slate-300">Web Development</div>
+            <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] text-center text-xs font-semibold text-slate-300">Learning New Technologies</div>
+            <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] text-center text-xs font-semibold text-slate-300">Creative Projects</div>
+            <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] text-center text-xs font-semibold text-slate-300">Problem Solving</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/10 to-transparent my-4"></div>
+
+    <!-- 3. PREVIOUS ACTIVITIES (1-4) SECTION (ALL 4 CLICKABLE GITHUB LINKS) -->
+    <section id="activities" class="py-24 px-6 sm:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-3">
+            <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+            <span>Coursework Milestones</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Previous Activities (1–4)</h2>
+          <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+            Academic activities completed as part of 3rd-semester B.Tech Computer Science and Engineering coursework at REVA University.
+          </p>
+        </div>
+
+        <div class="relative max-w-3xl mx-auto">
+          <div class="absolute left-5 sm:left-6 top-5 bottom-5 w-px bg-gradient-to-b from-cyan-400/60 via-indigo-400/30 to-transparent" aria-hidden="true"></div>
+          <ol class="relative list-none m-0 p-0">
+          <li class="relative pl-14 sm:pl-20 pb-8 last:pb-0">
+            <div class="absolute left-0 top-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#06080F] border-2 border-cyan-400 flex items-center justify-center text-base sm:text-lg font-bold font-mono text-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.35)]" aria-hidden="true">1</div>
+            <article class="glass-card rounded-2xl p-5 sm:p-7 border border-white/[0.08] hover:border-cyan-500/40 transition-colors">
+              <div class="flex items-center gap-3 mb-3">
+                <i data-lucide="code-2" class="w-5 h-5 text-cyan-400 shrink-0"></i>
+                <p class="text-sm font-mono font-semibold text-cyan-400">Activity 1</p>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">VS Code Setup</h3>
+              <p class="text-slate-300 text-[15px] sm:text-base leading-relaxed mb-6">I completed the initial setup of Visual Studio Code for programming and development. I learned how to use the editor, organize project files, and execute basic programs.</p>
+              <a href="https://github.com/pavana2605/ASSIGNMENTS/tree/main/Activity-01" target="_blank" rel="noopener noreferrer" aria-label="Activity 1: VS Code Setup on GitHub" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow">
+                <span>View on GitHub</span>
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </article>
+          </li>
+          <li class="relative pl-14 sm:pl-20 pb-8 last:pb-0">
+            <div class="absolute left-0 top-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#06080F] border-2 border-cyan-400 flex items-center justify-center text-base sm:text-lg font-bold font-mono text-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.35)]" aria-hidden="true">2</div>
+            <article class="glass-card rounded-2xl p-5 sm:p-7 border border-white/[0.08] hover:border-cyan-500/40 transition-colors">
+              <div class="flex items-center gap-3 mb-3">
+                <i data-lucide="git-branch" class="w-5 h-5 text-cyan-400 shrink-0"></i>
+                <p class="text-sm font-mono font-semibold text-cyan-400">Activity 2</p>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Git and GitHub Setup</h3>
+              <p class="text-slate-300 text-[15px] sm:text-base leading-relaxed mb-6">I set up Git and GitHub to manage and track my programming work. I learned the basics of repositories, commits, and pushing my work to GitHub.</p>
+              <a href="https://github.com/pavana2605/ASSIGNMENTS/tree/main/Activity-02" target="_blank" rel="noopener noreferrer" aria-label="Activity 2: Git and GitHub Setup on GitHub" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow">
+                <span>View on GitHub</span>
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </article>
+          </li>
+          <li class="relative pl-14 sm:pl-20 pb-8 last:pb-0">
+            <div class="absolute left-0 top-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#06080F] border-2 border-cyan-400 flex items-center justify-center text-base sm:text-lg font-bold font-mono text-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.35)]" aria-hidden="true">3</div>
+            <article class="glass-card rounded-2xl p-5 sm:p-7 border border-white/[0.08] hover:border-cyan-500/40 transition-colors">
+              <div class="flex items-center gap-3 mb-3">
+                <i data-lucide="users" class="w-5 h-5 text-cyan-400 shrink-0"></i>
+                <p class="text-sm font-mono font-semibold text-cyan-400">Activity 3</p>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">GitLens and Live Share</h3>
+              <p class="text-slate-300 text-[15px] sm:text-base leading-relaxed mb-6">I explored GitLens and Live Share to understand version control and collaborative programming. I worked on the activity involving collaboration, sharing code, and documenting my progress.</p>
+              <a href="https://github.com/pavana2605/ASSIGNMENTS/tree/main/Activity-03" target="_blank" rel="noopener noreferrer" aria-label="Activity 3: GitLens and Live Share on GitHub" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow">
+                <span>View on GitHub</span>
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </article>
+          </li>
+          <li class="relative pl-14 sm:pl-20 pb-8 last:pb-0">
+            <div class="absolute left-0 top-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#06080F] border-2 border-cyan-400 flex items-center justify-center text-base sm:text-lg font-bold font-mono text-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.35)]" aria-hidden="true">4</div>
+            <article class="glass-card rounded-2xl p-5 sm:p-7 border border-white/[0.08] hover:border-cyan-500/40 transition-colors">
+              <div class="flex items-center gap-3 mb-3">
+                <i data-lucide="braces" class="w-5 h-5 text-cyan-400 shrink-0"></i>
+                <p class="text-sm font-mono font-semibold text-cyan-400">Activity 4</p>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">LeetCode Practice Repository</h3>
+              <p class="text-slate-300 text-[15px] sm:text-base leading-relaxed mb-6">I created and maintained a GitHub repository for programming practice. I solved coding problems involving arrays, strings, and basic algorithms using C. I organized solutions into folders and documented my progress.</p>
+              <a href="https://github.com/pavana2605/ASSIGNMENTS/tree/main/Activity-04" target="_blank" rel="noopener noreferrer" aria-label="Activity 4: LeetCode Practice Repository on GitHub" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow">
+                <span>View on GitHub</span>
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </article>
+          </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent my-4"></div>
+
+    <!-- 4. TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="py-24 px-6 sm:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-14">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-3">
+            <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+            <span>Technical Capabilities</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Technical Skills</h2>
+          <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+            Programming languages, web technologies, databases, and developer tools I work with.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- C -->
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.07] hover:border-cyan-500/30 transition-all">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-cyan-400">
+                <i data-lucide="code-2" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-400">Languages</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">C Programming</h3>
+            <p class="text-xs font-mono text-cyan-400/80 mb-2">Core Systems & Algorithms</p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Used to solve array, string, and basic algorithm problems in my LeetCode practice repository.</p>
+          </div>
+
+          <!-- Java -->
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.07] hover:border-cyan-500/30 transition-all">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-amber-400">
+                <i data-lucide="coffee" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-400">Languages</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">Java Programming</h3>
+            <p class="text-xs font-mono text-cyan-400/80 mb-2">Object-Oriented Programming</p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Part of my programming skill set.</p>
+          </div>
+
+          <!-- HTML -->
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.07] hover:border-cyan-500/30 transition-all">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-rose-400">
+                <i data-lucide="globe" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-400">Web Development</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">HTML</h3>
+            <p class="text-xs font-mono text-cyan-400/80 mb-2">Structure & Semantics</p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Page structure and content for web projects such as My Dream Cars.</p>
+          </div>
+
+          <!-- CSS -->
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.07] hover:border-cyan-500/30 transition-all">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-cyan-400">
+                <i data-lucide="palette" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-400">Web Development</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">CSS</h3>
+            <p class="text-xs font-mono text-cyan-400/80 mb-2">Styling & Responsive Layouts</p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Styling for my web projects, including the automotive-inspired look of this portfolio.</p>
+          </div>
+
+          <!-- JavaScript -->
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.07] hover:border-cyan-500/30 transition-all">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-yellow-400">
+                <i data-lucide="file-code" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-400">Web Development</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">JavaScript</h3>
+            <p class="text-xs font-mono text-cyan-400/80 mb-2">Dynamic Client Logic</p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Client-side logic for my web projects.</p>
+          </div>
+
+          <!-- MySQL -->
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.07] hover:border-cyan-500/30 transition-all">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-emerald-400">
+                <i data-lucide="database" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-400">Databases</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">MySQL</h3>
+            <p class="text-xs font-mono text-cyan-400/80 mb-2">Relational Data Management</p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Stores the car data (engine, horsepower, speed, pricing) for My Dream Cars.</p>
+          </div>
+
+          <!-- Git and GitHub -->
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.07] hover:border-cyan-500/30 transition-all">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-purple-400">
+                <i data-lucide="git-branch" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-400">Tools</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">Git and GitHub</h3>
+            <p class="text-xs font-mono text-cyan-400/80 mb-2">Version Control</p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Repositories, commits, and pushing my work to GitHub (Activity 2).</p>
+          </div>
+
+          <!-- VS Code -->
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.07] hover:border-cyan-500/30 transition-all">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-sky-400">
+                <i data-lucide="laptop" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-400">Tools</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">Visual Studio Code</h3>
+            <p class="text-xs font-mono text-cyan-400/80 mb-2">Development Environment</p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Editor setup and project organisation (Activity 1), with GitLens and Live Share (Activity 3).</p>
+          </div>
+
+          <!-- Problem Solving -->
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.07] hover:border-cyan-500/30 transition-all">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-indigo-400">
+                <i data-lucide="brain" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-400">Foundations</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">Problem-Solving</h3>
+            <p class="text-xs font-mono text-cyan-400/80 mb-2">Programming Fundamentals</p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">Array, string, and basic algorithm problems practised in Activity 4.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-500/10 to-transparent my-4"></div>
+
+    <!-- 5. PROJECTS SECTION -->
+    <section id="projects" class="py-24 px-6 sm:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-3">
+            <i data-lucide="folder-git-2" class="w-3.5 h-3.5"></i>
+            <span>Showcase & Work</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Projects & Practical Work</h2>
+          <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+            Self-developed applications, a personal website, and my programming practice repository.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1: My Dream Cars -->
+          <div class="glass-card rounded-2xl overflow-hidden border border-white/[0.08] hover:border-cyan-500/40 flex flex-col justify-between group transition-all">
+            <div>
+              <div class="h-48 relative overflow-hidden bg-gradient-to-br from-blue-600/30 via-indigo-600/20 to-cyan-500/10 p-6 flex flex-col justify-between border-b border-white/[0.06]">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-mono uppercase px-2.5 py-1 rounded-md bg-black/40 border border-white/10 text-slate-200">Full Stack Web</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Automotive App</span>
+                </div>
+                <div class="flex items-center justify-center my-auto">
+                  <div class="w-14 h-14 rounded-2xl bg-black/40 border border-white/15 flex items-center justify-center text-cyan-400">
+                    <i data-lucide="database" class="w-7 h-7"></i>
+                  </div>
+                </div>
+                <span class="text-xs font-mono text-slate-300/80">Project 01</span>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-white mb-2.5 group-hover:text-cyan-300 transition-colors">My Dream Cars</h3>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-5">
+                  A self-developed web development project showcasing dream cars with specifications, descriptions, prices, performance information, and images.
+                </p>
+                <div class="space-y-1.5 mb-6 text-xs text-slate-300">
+                  <div class="flex items-start gap-2"><span class="text-cyan-400">▹</span><span>Built MySQL database for engine, horsepower, speed, and pricing</span></div>
+                  <div class="flex items-start gap-2"><span class="text-cyan-400">▹</span><span>Connected frontend to MySQL database using Node.js and Express</span></div>
+                  <div class="flex items-start gap-2"><span class="text-cyan-400">▹</span><span>Automotive-inspired user interface</span></div>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">HTML</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">CSS</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">JavaScript</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">Node.js</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">Express</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">MySQL</span>
+                </div>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-2 flex items-center gap-3 border-t border-white/[0.05]">
+              <a href="https://github.com/pavana2605" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-slate-200 hover:text-white bg-white/[0.04] border border-white/[0.08] rounded-lg transition-all">
+                <svg class="w-3.5 h-3.5 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg><span>GitHub</span>
+              </a>
+              <span class="flex-1 inline-flex items-center justify-center gap-1 text-xs font-mono text-slate-500 bg-white/[0.01] border border-white/[0.03] rounded-lg py-2">
+                Self-Developed
+              </span>
+            </div>
+          </div>
+
+          <!-- Project 2: Personal Portfolio Website -->
+          <div class="glass-card rounded-2xl overflow-hidden border border-white/[0.08] hover:border-cyan-500/40 flex flex-col justify-between group transition-all">
+            <div>
+              <div class="h-48 relative overflow-hidden bg-gradient-to-br from-cyan-600/30 via-sky-600/20 to-blue-500/10 p-6 flex flex-col justify-between border-b border-white/[0.06]">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-mono uppercase px-2.5 py-1 rounded-md bg-black/40 border border-white/10 text-slate-200">Web Development</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Cinematic UI</span>
+                </div>
+                <div class="flex items-center justify-center my-auto">
+                  <div class="w-14 h-14 rounded-2xl bg-black/40 border border-white/15 flex items-center justify-center text-sky-400">
+                    <i data-lucide="layers" class="w-7 h-7"></i>
+                  </div>
+                </div>
+                <span class="text-xs font-mono text-slate-300/80">Project 02</span>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-white mb-2.5 group-hover:text-cyan-300 transition-colors">Personal Portfolio Website</h3>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-5">
+                  A personal portfolio website designed to present my profile, interests, education, skills, and development work with modern cinematic styling.
+                </p>
+                <div class="space-y-1.5 mb-6 text-xs text-slate-300">
+                  <div class="flex items-start gap-2"><span class="text-cyan-400">▹</span><span>Modern cinematic dark theme with automotive-inspired styling</span></div>
+                  <div class="flex items-start gap-2"><span class="text-cyan-400">▹</span><span>Showcases my activities, skills, and projects</span></div>
+                  <div class="flex items-start gap-2"><span class="text-cyan-400">▹</span><span>Responsive layout optimized for desktop and mobile screens</span></div>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">HTML</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">CSS</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">JavaScript</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">React</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">Tailwind CSS</span>
+                </div>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-2 flex items-center gap-3 border-t border-white/[0.05]">
+              <a href="https://github.com/pavana2605/portfolio" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-slate-200 hover:text-white bg-white/[0.04] border border-white/[0.08] rounded-lg transition-all">
+                <svg class="w-3.5 h-3.5 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg><span>Code</span>
+              </a>
+              <a href="#home" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i><span>Active Site</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 3: LeetCode Practice Repository -->
+          <div class="glass-card rounded-2xl overflow-hidden border border-white/[0.08] hover:border-cyan-500/40 flex flex-col justify-between group transition-all">
+            <div>
+              <div class="h-48 relative overflow-hidden bg-gradient-to-br from-emerald-600/30 via-teal-600/20 to-cyan-500/10 p-6 flex flex-col justify-between border-b border-white/[0.06]">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-mono uppercase px-2.5 py-1 rounded-md bg-black/40 border border-white/10 text-slate-200">Algorithms</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">C Practice</span>
+                </div>
+                <div class="flex items-center justify-center my-auto">
+                  <div class="w-14 h-14 rounded-2xl bg-black/40 border border-white/15 flex items-center justify-center text-emerald-400">
+                    <i data-lucide="binary" class="w-7 h-7"></i>
+                  </div>
+                </div>
+                <span class="text-xs font-mono text-slate-300/80">Project 03</span>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-white mb-2.5 group-hover:text-cyan-300 transition-colors">LeetCode Practice Repository</h3>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-5">
+                  A collection of C programming solutions for coding problems involving arrays, strings, and algorithms demonstrating regular programming practice.
+                </p>
+                <div class="space-y-1.5 mb-6 text-xs text-slate-300">
+                  <div class="flex items-start gap-2"><span class="text-cyan-400">▹</span><span>Structured repository organizing C solutions</span></div>
+                  <div class="flex items-start gap-2"><span class="text-cyan-400">▹</span><span>Focus on array, string, and algorithm problem solving</span></div>
+                  <div class="flex items-start gap-2"><span class="text-cyan-400">▹</span><span>Direct artifact from Activity 4</span></div>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">C Programming</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">Algorithms</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">Git</span>
+                  <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-300">GitHub</span>
+                </div>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-2 flex items-center gap-3 border-t border-white/[0.05]">
+              <a href="https://github.com/pavana2605/ASSIGNMENTS/tree/main/Activity-04" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-slate-200 hover:text-white bg-white/[0.04] border border-white/[0.08] hover:border-cyan-400/40 rounded-lg transition-all">
+                <svg class="w-3.5 h-3.5 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg><span>Activity 4 Repo</span>
+              </a>
+              <span class="flex-1 inline-flex items-center justify-center gap-1 text-xs font-mono text-slate-500 bg-white/[0.01] border border-white/[0.03] rounded-lg py-2">
+                Coursework
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto w-full h-[1px] bg-gradient-to-r from-transparent via-violet-500/10 to-transparent my-4"></div>
+
+    <!-- 6. EDUCATION SECTION -->
+    <section id="education" class="py-24 px-6 sm:px-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-3">
+            <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
+            <span>Academic Background</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Education</h2>
+          <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+            Undergraduate Computer Science and Engineering education at REVA University.
+          </p>
+        </div>
+
+        <div class="relative pl-6 sm:pl-8 border-l border-white/[0.1] max-w-3xl mx-auto space-y-12">
+          <div class="relative group">
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-6 h-6 rounded-full bg-[#06080F] border-2 border-cyan-400 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+              <div class="w-2 h-2 rounded-full bg-cyan-400"></div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 sm:p-8 border border-white/[0.08] hover:border-cyan-500/30 transition-all">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20">
+                    3rd Semester • Current
+                  </span>
+                  <h3 class="text-2xl font-bold text-white tracking-tight mt-2">Bachelor of Technology (B.Tech)</h3>
+                  <p class="text-base text-cyan-300 font-semibold mt-0.5">Computer Science and Engineering</p>
+                </div>
+                <div class="flex flex-col sm:items-end gap-1 text-xs text-slate-400 font-mono">
+                  <span class="flex items-center gap-1.5 text-slate-300">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-cyan-400"></i> Bengaluru, India
+                  </span>
+                  
+                </div>
+              </div>
+
+              <div class="inline-block px-3 py-1 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm font-semibold text-slate-200 mb-4">
+                🏫 REVA University
+              </div>
+
+              <p class="text-slate-300 text-sm leading-relaxed">Pursuing a B.Tech in Computer Science and Engineering at REVA University, Bengaluru. Currently in the 3rd semester.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent my-4"></div>
+
+    <!-- 7. CAREER GOAL SECTION -->
+    <section id="career-goal" class="py-24 px-6 sm:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-3">
+            <i data-lucide="target" class="w-3.5 h-3.5"></i>
+            <span>Aspiration & Vision</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Career & Learning Goal</h2>
+          <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+            The skills I want to build on the way to a software engineering career.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 sm:p-12 border border-white/[0.08] relative overflow-hidden">
+          <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+              <span class="px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.12] text-xs font-mono font-medium text-slate-200">
+                Primary Goal
+              </span>
+              <span class="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-semibold">
+                Target Role: <strong class="text-white">Software Engineer at Apple</strong>
+              </span>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-snug mb-6">
+              Become a skilled software engineer and work toward securing a software engineering role at <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-300">Apple</span>.
+            </h3>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+              My long-term goal is to become a skilled software engineer and work toward securing a software engineering role at Apple. I plan to improve my data structures, algorithms, programming, and full-stack development skills while continuing to build projects and gain practical experience.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-8 border-t border-white/[0.08]">
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <div class="flex items-center gap-3 mb-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                    <i data-lucide="binary" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-white">Data Structures & Algorithms</h4>
+                </div>
+                <p class="text-xs text-slate-400 pl-11">Improving my data structures, algorithms, and programming skills.</p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <div class="flex items-center gap-3 mb-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                    <i data-lucide="server" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-white">Full-Stack & Systems Engineering</h4>
+                </div>
+                <p class="text-xs text-slate-400 pl-11">Improving my full-stack development skills.</p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <div class="flex items-center gap-3 mb-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-white">Working Toward Apple</h4>
+                </div>
+                <p class="text-xs text-slate-400 pl-11">Working toward a software engineering role at Apple.</p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <div class="flex items-center gap-3 mb-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                    <i data-lucide="flame" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-white">Practical Projects</h4>
+                </div>
+                <p class="text-xs text-slate-400 pl-11">Continuing to build projects and gain practical experience.</p>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-white/[0.08]">
+              <p class="text-xs sm:text-sm text-slate-400 italic">
+                “Through these activities and projects, I have developed a foundation in programming, version control, web development, and problem-solving. I aim to continue improving my technical abilities and apply my knowledge to develop useful and innovative applications.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/10 to-transparent my-4"></div>
+
+    <!-- 8. CONTACT SECTION -->
+    <section id="contact" class="py-24 px-6 sm:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-3">
+            <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+            <span>Get In Touch</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Let's Connect</h2>
+          <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+            Interested in collaboration, projects, or software engineering inquiries? Reach out anytime.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-5 space-y-6">
+            <div class="glass-card rounded-2xl p-8 border border-white/[0.08]">
+              <h3 class="text-xl font-bold text-white mb-3">Contact Information</h3>
+              <p class="text-xs sm:text-sm text-slate-400 mb-6">Feel free to email me directly or explore my code and background via GitHub, LinkedIn, and Instagram.</p>
+              
+              <div class="space-y-4">
+                <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                      <i data-lucide="mail" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <p class="text-[11px] font-mono text-slate-500 uppercase">Email</p>
+                      <a href="mailto:pavana.moh@gmail.com" class="text-xs sm:text-sm text-slate-200 hover:text-cyan-300 font-medium">pavana.moh@gmail.com</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <p class="text-[11px] font-mono text-slate-500 uppercase">Location</p>
+                    <p class="text-xs sm:text-sm text-slate-200 font-medium">Bengaluru, India</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-white/[0.08]">
+                <p class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-4">Professional Channels</p>
+                <div class="flex flex-col gap-2.5">
+                  <a href="https://github.com/pavana2605" target="_blank" rel="noreferrer" class="flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-xs font-semibold text-slate-200 transition-all">
+                    <div class="flex items-center gap-2.5">
+                      <svg class="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg>
+                      <span>GitHub</span>
+                    </div>
+                    <span class="text-slate-500 font-mono text-[11px]">pavana2605 ↗</span>
+                  </a>
+                  <a href="https://www.linkedin.com/in/pavana-m-30b1bb438/" target="_blank" rel="noreferrer" class="flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-xs font-semibold text-slate-200 transition-all">
+                    <div class="flex items-center gap-2.5">
+                      <svg class="w-4 h-4 text-blue-400 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-linkedin"></use></svg>
+                      <span>LinkedIn</span>
+                    </div>
+                    <span class="text-slate-500 font-mono text-[11px]">pavana-m ↗</span>
+                  </a>
+                  <a href="https://www.instagram.com/pavana.__m/" target="_blank" rel="noreferrer" class="flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-xs font-semibold text-slate-200 transition-all">
+                    <div class="flex items-center gap-2.5">
+                      <svg class="w-4 h-4 text-pink-400 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-instagram"></use></svg>
+                      <span>Instagram</span>
+                    </div>
+                    <span class="text-slate-500 font-mono text-[11px]">@pavana.__m ↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="glass-card rounded-2xl p-8 sm:p-10 border border-white/[0.08]">
+              <h3 class="text-xl font-bold text-white mb-2">Get in Touch</h3><p class="text-sm text-slate-400 mb-6">The quickest way to reach me is by email.</p><a href="mailto:pavana.moh@gmail.com" class="inline-flex w-full items-center justify-center py-3.5 px-6 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500">Email pavana.moh@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto w-full h-[1px] bg-gradient-to-r from-transparent via-pink-500/10 to-transparent my-4"></div>
+
+    <!-- 9. SOCIAL LINKS & INSTAGRAM QR CODE SECTION -->
+    <section id="socials" class="py-24 px-6 sm:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-3">
+            <svg class="w-3.5 h-3.5 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-instagram"></use></svg>
+            <span>Digital Presence</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+            Social Links & Instagram
+          </h2>
+          <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+            Connect across professional networks, explore repositories, and follow my development journey.
+          </p>
+        </div>
+
+        <!-- Featured Instagram Spotlight Card -->
+        <div class="glass-card rounded-3xl p-8 sm:p-12 border border-white/[0.08] relative overflow-hidden mb-12">
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-7 space-y-6">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/15 border border-pink-500/30 text-pink-300 text-xs font-mono font-medium">
+                <svg class="w-3.5 h-3.5 text-pink-400 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-instagram"></use></svg>
+                <span>Instagram Profile</span>
+              </div>
+
+              <h3 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                Connect With Me on Instagram
+              </h3>
+
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                Follow my creative tech projects, automotive design explorations, and undergraduate computer science journey at REVA University.
+              </p>
+
+              <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono text-slate-500 uppercase">Username</span>
+                  <span class="text-xs font-mono text-cyan-400 font-semibold">@pavana.__m</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono text-slate-500 uppercase">Direct Profile URL</span>
+                  <a href="https://www.instagram.com/pavana.__m/" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-slate-300 hover:text-white transition-colors truncate max-w-[220px] sm:max-w-none">
+                    https://www.instagram.com/pavana.__m/
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                <a href="https://www.instagram.com/pavana.__m/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 shadow-[0_0_20px_rgba(219,39,119,0.35)] hover:shadow-[0_0_30px_rgba(219,39,119,0.55)] transition-all">
+                  <svg class="w-4 h-4 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-instagram"></use></svg>
+                  <span>Open Instagram Profile</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+
+                <button onclick="navigator.clipboard.writeText('https://www.instagram.com/pavana.__m/'); this.querySelector('span').textContent='Link copied';" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-semibold text-xs text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] transition-all">
+                  <i data-lucide="copy" class="w-4 h-4"></i>
+                  <span>Copy Profile Link</span>
+                </button>
+              </div>
+
+              
+            </div>
+
+            <!-- Scannable High-Contrast QR Code Card -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center">
+              <div class="relative group">
+                <div class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 blur-xl opacity-75"></div>
+
+                <div class="relative p-6 sm:p-7 rounded-2xl bg-white border-2 border-white/20 shadow-2xl flex flex-col items-center">
+                  <div class="w-60 h-60 sm:w-72 sm:h-72 flex items-center justify-center bg-white p-2">
+                    <!-- Inline High-Precision Crisp SVG QR Code for https://www.instagram.com/pavana.__m/ -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges" role="img" aria-label="QR code linking to https://www.instagram.com/pavana.__m/" class="w-full h-full">
+                      <path fill="#ffffff" d="M0 0h33v33H0z"/>
+                      <path stroke="#000000" d="M2 2.5h7m4 0h3m4 0h3m1 0h7M2 3.5h1m5 0h1m2 0h1m1 0h8m3 0h1m5 0h1M2 4.5h1m1 0h3m1 0h1m1 0h5m1 0h3m2 0h2m1 0h1m1 0h3m1 0h1M2 5.5h1m1 0h3m1 0h1m1 0h2m1 0h2m4 0h1m1 0h1m2 0h1m1 0h3m1 0h1M2 6.5h1m1 0h3m1 0h1m1 0h3m1 0h2m2 0h4m2 0h1m1 0h3m1 0h1M2 7.5h1m5 0h1m1 0h2m1 0h1m1 0h5m2 0h1m1 0h1m5 0h1M2 8.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 9.5h4m1 0h1m2 0h1m3 0h1M2 10.5h1m1 0h5m4 0h2m1 0h1m1 0h2m1 0h1m2 0h5M2 11.5h6m1 0h1m2 0h1m1 0h1m2 0h10m3 0h1M2 12.5h1m1 0h1m1 0h6m2 0h1m2 0h2m3 0h3M4 13.5h2m3 0h3m2 0h1m1 0h1m1 0h1m6 0h1m1 0h1m1 0h1M3 14.5h1m1 0h1m2 0h2m3 0h2m3 0h3m6 0h2M4 15.5h4m1 0h4m1 0h11m1 0h1m3 0h1M3 16.5h3m2 0h1m1 0h1m1 0h1m2 0h3m1 0h1m4 0h2m1 0h2M2 17.5h2m2 0h1m3 0h3m1 0h2m2 0h1m2 0h1m1 0h4m2 0h1M4 18.5h1m1 0h1m1 0h2m3 0h2m1 0h1m2 0h1m2 0h1m2 0h1m1 0h2M2 19.5h2m1 0h1m3 0h2m1 0h1m8 0h2m1 0h3m1 0h1m1 0h1M2 20.5h1m2 0h6m1 0h3m2 0h2m1 0h1m1 0h2m1 0h1m2 0h1M2 21.5h1m2 0h3m2 0h1m2 0h1m2 0h2m2 0h3m1 0h3m2 0h1M2 22.5h1m1 0h1m1 0h3m2 0h4m2 0h1m1 0h1m2 0h5m1 0h3M10 23.5h1m1 0h5m1 0h1m1 0h1m1 0h1m3 0h5M2 24.5h7m2 0h3m1 0h3m2 0h3m1 0h1m1 0h3M2 25.5h1m5 0h1m1 0h2m1 0h3m2 0h1m2 0h2m3 0h1M2 26.5h1m1 0h3m1 0h1m1 0h2m4 0h1m2 0h1m2 0h5m1 0h1M2 27.5h1m1 0h3m1 0h1m1 0h1m2 0h2m3 0h1m2 0h1m3 0h1m1 0h4M2 28.5h1m1 0h3m1 0h1m1 0h1m2 0h7m4 0h6M2 29.5h1m5 0h1m2 0h2m3 0h2m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1M2 30.5h7m1 0h1m1 0h1m3 0h2m1 0h1m1 0h1m1 0h1m1 0h4"/>
+                    </svg>
+                  </div>
+
+                  <div class="mt-4 pt-3 border-t border-slate-200 text-center w-full">
+                    <p class="text-xs sm:text-sm font-bold text-slate-900 tracking-tight">
+                      Scan to visit my Instagram
+                    </p>
+                    <p class="text-[11px] font-mono text-slate-500 mt-0.5">
+                      Point camera to open @pavana.__m
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 text-center">
+                <a href="https://www.instagram.com/pavana.__m/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
+                  <span>instagram.com/pavana.__m</span>
+                  <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Social Channels Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.08] hover:border-cyan-500/40 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center text-cyan-400">
+                  <svg class="w-5 h-5 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg>
+                </div>
+                <span class="text-[11px] font-mono uppercase text-slate-500">Repositories</span>
+              </div>
+              <h4 class="text-base font-bold text-white mb-1">GitHub Profile</h4>
+              <p class="text-xs text-slate-400 mb-4">Explore source code, Activity 1–4 assignments, and LeetCode solutions.</p>
+            </div>
+            <a href="https://github.com/pavana2605" target="_blank" rel="noopener noreferrer" class="pt-3 border-t border-white/[0.06] text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center justify-between">
+              <span>github.com/pavana2605</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.08] hover:border-blue-500/40 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                  <svg class="w-5 h-5 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-linkedin"></use></svg>
+                </div>
+                <span class="text-[11px] font-mono uppercase text-slate-500">Network</span>
+              </div>
+              <h4 class="text-base font-bold text-white mb-1">LinkedIn Profile</h4>
+              <p class="text-xs text-slate-400 mb-4">Connect professionally and follow computer science engineering updates.</p>
+            </div>
+            <a href="https://www.linkedin.com/in/pavana-m-30b1bb438/" target="_blank" rel="noopener noreferrer" class="pt-3 border-t border-white/[0.06] text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center justify-between">
+              <span>Connect on LinkedIn</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.08] hover:border-pink-500/40 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
+                  <svg class="w-5 h-5 shrink-0" aria-hidden="true" focusable="false"><use href="#icon-instagram"></use></svg>
+                </div>
+                <span class="text-[11px] font-mono uppercase text-slate-500">Social</span>
+              </div>
+              <h4 class="text-base font-bold text-white mb-1">Instagram Profile</h4>
+              <p class="text-xs text-slate-400 mb-4">Direct profile access and visual updates from Pavana M (@pavana.__m).</p>
+            </div>
+            <a href="https://www.instagram.com/pavana.__m/" target="_blank" rel="noopener noreferrer" class="pt-3 border-t border-white/[0.06] text-xs font-semibold text-pink-400 hover:text-pink-300 flex items-center justify-between">
+              <span>Follow @pavana.__m</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative border-t border-white/[0.08] bg-[#05070D] z-10 pt-16 pb-12 px-6 sm:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col items-center">
+      <div class="w-full flex flex-col md:flex-row items-center justify-between gap-6 pb-12 border-b border-white/[0.06]">
+        <div class="text-center md:text-left">
+          <h3 class="text-lg font-bold text-white tracking-tight flex items-center justify-center md:justify-start gap-2">
+            <span>Pavana M</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+          </h3>
+          <p class="text-xs text-slate-400 font-mono mt-1">
+            Computer Science and Engineering • REVA University (3rd Semester)
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-5 text-xs font-medium text-slate-400">
+          <a href="#home" class="hover:text-white transition-colors">Home</a>
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#activities" class="hover:text-white transition-colors">Activities</a>
+          <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+          <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+          <a href="#education" class="hover:text-white transition-colors">Education</a>
+          <a href="#career-goal" class="hover:text-white transition-colors">Career Goal</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+          <a href="#socials" class="hover:text-white transition-colors">Socials</a>
+        </div>
+
+        <a href="#home" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-xs font-mono text-slate-300 hover:text-white transition-all">
+          <span>Top</span> ↑
+        </a>
+      </div>
+
+      <div class="w-full pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+        <p>© 2026 Pavana M. Activity 11 — AI-Assisted Portfolio Blog.</p>
+        <span class="inline-flex items-center gap-1.5 text-cyan-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+          Aiming for Software Engineering at Apple
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Particle Background Script -->
+  <script>
+    lucide.createIcons();
+
+    // Canvas Particle Network
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      initParticles();
+    });
+
+    let particles = [];
+    function initParticles() {
+      particles = [];
+      const count = window.innerWidth < 768 ? 35 : 75;
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          radius: Math.random() * 1.5 + 0.8,
+        });
+      }
+    }
+    initParticles();
+
+    function render() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(147, 197, 253, ${0.12 * (1 - dist / 100)})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(render);
+    }
+    render();
+  </script>
+</body>
+</html>
